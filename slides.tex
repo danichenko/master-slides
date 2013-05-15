@@ -1,0 +1,107 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\mode<presentation> {
+\usetheme{Goettingen}
+\setbeamertemplate{footline}[page number] 
+\setbeamertemplate{navigation symbols}{}
+}
+
+
+\usepackage[russian]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{graphicx}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{Построение автоматной модели по данным трассировки программы}
+
+\author[]{Андрей Данильченко \\
+Научный руководитель: Царев Ф. Н.} % Your name
+\institute[НИУ ИТМО]{СПб НИУ ИТМО}
+\date{16 мая 2013}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------
+\section{Введение} 
+\subsection{Постановка задачи}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Мир управляющих автоматов}
+\begin{itemize}
+\item Понятные модели
+\item Можно автоматически строить тесты
+\item Легко проводить верификацию
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Реальность}
+\begin{itemize}
+\item Есть только бинарные файлы
+\item Нет ясной модели поведения программы
+\item Трудно строить тесты
+\item Не подлежит верификации напрямую
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\subsection{Существующие решения}
+
+\begin{frame}
+\frametitle{\subsecname~---~PACHIKA}
+V. Dallmeyer, A. Zeller, B. Meyer, 2009 
+
+\begin{itemize}
+\item Строит ДКА по трассировкам
+\item Склеивает состояния автомата на основе \textit{упрощенных} значений полей:
+\begin{align*}
+boolean & \rightarrow x \mbox{ or } !x\\
+numeric &\rightarrow x \ge 0 \mbox{ or }  x < 0\\
+Object &\rightarrow x == null \mbox{ or } x != null
+\end{align*}
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{\subsecname~---~GK-Tail}
+D. Lorenzoli, L. Mariani, M. Pezz\`{e}, 2006-2008
+
+\begin{itemize}
+\item Строит \textit{расширенный} ДКА по трассировкам
+\item Склеивает одинаковые последовательности вызовов с разными параметрами
+\item Склеивает состояния, если $k$-хвост одинаковый
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\Huge{\centerline{Спасибо!}}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\end{document} 
